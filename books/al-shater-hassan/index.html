@@ -1,0 +1,242 @@
+<title>الشاطر حسن</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Baloo+Bhaijaan+2:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one landscape picture-book spread on a moonlit stage — illustration page on the left, text page on the right, page controls beneath. */
+:root{
+  --stage:#DCD9E8;          /* moonlit mountain night, softened */
+  --stage-ink:#2B2D52;      /* controls on the stage */
+  --paper:#FBF6EA;          /* the book page itself (same in both themes) */
+  --ink:#33302A;            /* story text */
+  --ink-soft:#66604F;       /* author line, captions */
+  --leaf:#A4521A;           /* candle flame */
+  --spine:rgba(51,48,42,.18);
+  --btn:#FBF6EA;
+  --btn-ink:#33302A;
+  --display:'Lalezar','Baloo Bhaijaan 2',Tahoma,sans-serif;
+  --text:'Baloo Bhaijaan 2',Tahoma,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --stage:#151832; --stage-ink:#D6D8EE; --btn:#262A4D; --btn-ink:#F1E9D6; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --stage:#151832; --stage-ink:#D6D8EE; --btn:#262A4D; --btn-ink:#F1E9D6; color-scheme:dark;
+}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{
+  background:var(--stage);color:var(--stage-ink);font-family:var(--text);
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:16px;box-sizing:border-box;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+}
+.book{
+  width:min(1200px,100%,calc((100vh - 120px) * 1.6));
+  width:min(1200px,100%,calc((100dvh - 120px) * 1.6));
+  aspect-ratio:16/10;max-width:100%;
+  display:grid;grid-template-columns:46.6% 1fr;grid-template-rows:minmax(0,1fr);
+  direction:ltr;                        /* picture on the left, text page on the right */
+  background:var(--paper);border-radius:6px 14px 14px 6px;
+  box-shadow:0 1px 0 rgba(0,0,0,.04),0 18px 40px -18px rgba(30,30,70,.45),0 2px 6px rgba(30,30,70,.12);
+  overflow:hidden;position:relative;
+  touch-action:pan-y;
+}
+.text-page{
+  direction:rtl;min-width:0;min-height:0;overflow:hidden;position:relative;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(20px,6%,72px);
+  background:
+    radial-gradient(120% 90% at 30% 20%,rgba(255,255,255,.55),transparent 60%),
+    var(--paper);
+  color:var(--ink);
+}
+.pic-page{position:relative;min-width:0;background:#E9E6F1;order:-1}
+.pic-page img{width:100%;height:100%;object-fit:cover;display:block}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  background:radial-gradient(100% 80% at 50% 40%,#F4EEDC,#DCD9E8);color:var(--leaf);direction:rtl;text-align:center;padding:24px}
+.ph svg{width:clamp(40px,6vw,76px);height:auto;opacity:.7}
+.ph p{margin:0;font-size:clamp(.95rem,1.5vw,1.25rem);color:var(--ink-soft)}
+.pic-page::before{ /* the spine shadow where the pages meet */
+  content:"";position:absolute;inset:0 0 0 auto;width:28px;z-index:1;
+  background:linear-gradient(270deg,var(--spine),transparent);
+  pointer-events:none;
+}
+.fade{transition:opacity .35s ease}
+.turning .fade{opacity:0}
+
+/* cover */
+.cover{display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(10px,2.2vw,24px)}
+.cover .kicker{margin:0;font-size:clamp(.95rem,1.6vw,1.3rem);color:var(--ink-soft);letter-spacing:.02em}
+.cover h1{
+  font-family:var(--display);font-weight:400;margin:0;line-height:1.05;
+  font-size:clamp(2.8rem,8vw,6.8rem);color:var(--leaf);
+  text-shadow:0 2px 0 rgba(255,255,255,.7);
+  text-wrap:balance;
+}
+.ornament{display:flex;align-items:center;gap:12px;color:var(--leaf)}
+.ornament span{display:block;width:clamp(36px,6vw,80px);height:2px;background:currentColor;opacity:.45;border-radius:2px}
+.ornament svg{width:clamp(22px,2.6vw,32px);height:auto}
+.author{margin:0;font-size:clamp(1.05rem,2.1vw,1.7rem);color:var(--ink-soft);font-weight:500}
+.author b{color:var(--ink);font-weight:700}
+
+/* story pages */
+.story{flex:none;display:flex;flex-direction:column;gap:.55em;font-size:clamp(1rem,1.8vw,1.6rem)}
+.story p{margin:0;font-size:1em;line-height:1.75;font-weight:500;text-wrap:pretty}
+.story h2.sec{font-family:var(--display);font-weight:400;font-size:1.6em;line-height:1.2;margin:0 0 .2em;color:var(--leaf)}
+.story p.lesson{font-weight:700;color:var(--leaf)}
+.story p.dlg{padding-inline-start:1.1em;text-indent:-1.1em}
+.verse{margin:.2em 0;padding:.5em 1em;border-inline-start:3px solid var(--leaf);background:rgba(194,88,15,.07);border-radius:4px 10px 10px 4px}
+.verse p{font-weight:600;color:var(--leaf);line-height:1.7}
+.folio{position:absolute;bottom:clamp(10px,2.5%,22px);inset-inline:0;text-align:center;font-size:clamp(.85rem,1.3vw,1.05rem);color:var(--ink-soft)}
+
+/* controls */
+.controls{display:flex;align-items:center;gap:20px;direction:ltr}
+.controls button{
+  font:inherit;font-weight:600;font-size:1.05rem;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:999px;border:0;cursor:pointer;
+  background:var(--btn);color:var(--btn-ink);
+  box-shadow:0 2px 6px rgba(30,30,70,.18);
+  transition:transform .15s ease,opacity .15s ease;
+}
+.controls button:hover:not(:disabled){transform:translateY(-1px)}
+.controls button:focus-visible{outline:3px solid var(--leaf);outline-offset:3px}
+.controls button:disabled{opacity:.35;cursor:default}
+.count{min-width:6.5em;text-align:center;font-size:1rem;font-variant-numeric:tabular-nums}
+
+@media (max-width:640px), (orientation:portrait) and (max-width:900px){
+  .book{display:flex;flex-direction:column;aspect-ratio:auto;width:100%;border-radius:12px}
+  .pic-page{height:min(56vh,120vw)}
+  .pic-page::before{display:none}
+  .text-page{padding:28px 22px 44px}
+}
+@media (prefers-reduced-motion:reduce){.fade,.controls button{transition:none}}
+</style>
+
+<main class="book" id="book" aria-live="polite">
+  <section class="text-page"><div class="fade" id="text"></div><p class="folio" id="folio"></p></section>
+  <figure class="pic-page" style="margin:0"><img class="fade" id="pic" alt="" hidden><div class="ph fade" id="ph" hidden></div></figure>
+</main>
+
+<nav class="controls" aria-label="التنقل بين الصفحات">
+  <button id="next" type="button" aria-label="الصفحة التالية">‹ التالي</button>
+  <span class="count" id="count" dir="rtl"></span>
+  <button id="prev" type="button" aria-label="الصفحة السابقة">السابق ›</button>
+</nav>
+
+<script>
+// The book's pages. A page is { img: "p01.jpg", alt: "...", text: [...] }; a text item can be a string or { verse: [lines] }.
+const BOOK = {
+  title: "الشاطر حسن",
+  kicker: "حكاية شعبية",
+  credit: "إعداد",
+  author: "إياد زيعور",
+  pages: [
+    { type: "cover", img: "images/h00.jpg" },
+    {"img": "images/h01.jpg", "title": "الملك وأبناؤه", "text": ["كان يا ما كان، في قديم الزمان، وسالف العصر والأوان، ملك عظيم يحكم بلادًا واسعة.", "وكان لهذا الملك ثلاثة أبناء: محمد، وعلي، وأصغرهم حسن، الذي كان الناس ينادونه بالشاطر حسن.", "وكان الملك يحب أبناءه الثلاثة، وكانوا يحبونه ويطيعونه."]},
+    {"img": "images/h02.jpg", "title": "وصية الملك", "text": ["ومرت الأيام والسنون، حتى مرض الملك مرضًا شديدًا.", "فجمع أبناءه وقال:", "– يا أبنائي، إذا جاء أجلي، فضعوني في تابوت، واحملوه على ظهر ناقتي البيضاء، ثم اتبعوها أينما ذهبت.", "– وحين تبرك الناقة، فهناك تدفنوني، وتقيمون عند قبري ثلاثة أشهر.", "تعجب الأبناء من وصية أبيهم، لكنهم وعدوه بتنفيذها."]},
+    {"img": "images/h03.jpg", "title": "رحلة الناقة البيضاء", "text": ["ولم تمض أيام حتى توفي الملك، فحزن عليه أبناؤه وأهل المملكة.", "ووضع الأبناء تابوت أبيهم على ظهر الناقة البيضاء، ثم أطلقوا لها العنان وساروا خلفها.", "مشت الناقة ومشت...", "عبرت السهول والوديان، وصعدت التلال والجبال، حتى وصلت إلى قمة جبل مرتفع.", "وهناك أطلقت صوتًا عاليًا وبركت على الأرض.", "قال محمد:", "– هنا اختارت الناقة مكان أبي!"]},
+    {"img": "images/h04c.jpg", "title": "الخيمة فوق الجبل", "text": ["دفن الأبناء أباهم، ونصبوا خيمتهم قرب قبره.", "وفي المساء قال محمد:", "– سنقسم الليل بيننا. أسهر أنا أول الليل، ثم يوقظ علي حسنًا عندما تنتهي شمعته.", "وافق الأخوان.", "وفي الليلة الأولى، جلس محمد يقرأ ويدعو لأبيه، حتى انتهت شمعته.", "ثم جاء دور علي.", "وأخيرًا جاء دور حسن."]},
+    {"img": "images/h05.jpg", "title": "الشمعة التي انطفأت", "text": ["جلس الشاطر حسن قرب قبر أبيه، وأشعل شمعته.", "كان الليل شديد الظلام، والريح تصفر بين الصخور.", "وفجأة...", "هبّت ريح قوية!", "وانطفأت الشمعة!", "بحث حسن عن حجر القدح ليشعلها من جديد، فلم يجده.", "نظر إلى أخويه النائمين وقال:", "– لن أوقظهما من أجل شمعة.", "ثم رأى من بعيد ضوء نار صغيرة في قاع الوادي.", "– سأذهب إلى تلك النار وآتي منها بشعلة!"]},
+    {"img": "images/h06.jpg", "title": "الغول ذو اللحية الطويلة", "text": ["نزل حسن الجبل واقترب من النار.", "ولكن يا للعجب!", "كان عندها غول هائل الحجم!", "رأسه كبير كقبة الجامع، وذراعاه كجذوع الأشجار، ولحيته طويلة تكاد تلامس الأرض.", "تقدم حسن وقال:", "– السلام عليك يا جدي!", "رفع الغول رأسه وزأر:", "– لولا أن سلامك سبق كلامك، لما تركتك تقترب مني!", "لكن حسنًا ابتسم وقال:", "– وما بال لحيتك يا جدي؟ لقد طالت حتى كادت تدخل النار!"]},
+    {"img": "images/h07.jpg", "title": "حلاق الغول", "text": ["قال حسن:", "– أتسمح لي أن أهذب لحيتك؟", "تعجب الغول، ثم ضحك ضحكة هزت الصخور!", "– وهل تعرف كيف تهذب اللحى؟", "– ولماذا لا أعرف؟ اجلس ساكنًا وسترى!", "أخرج حسن سيفه، وأخذ يقص أطراف اللحية الطويلة.", "ولما انتهى، تحسس الغول لحيته وأعجبته كثيرًا.", "– أحسنت يا شاطر حسن! والآن قل لي ماذا تريد؟", "– لا أريد إلا شعلة من نارك، فقد انطفأت شمعتي."]},
+    {"img": "images/h08.jpg", "title": "سر الأربعين غولًا", "text": ["قال الغول:", "– خذ ما تشاء، ولكن أسرع بالرحيل قبل أن يعود أبنائي الأربعون!", "فتح حسن عينيه دهشة.", "– أربعون ابنًا؟!", "– نعم، وهم ذاهبون الليلة إلى قصر الملك ليسرقوا خزانته!", "ثم اقترب منه وهمس:", "– إذا قابلتهم، فقل إنك كنت عند أبيهم، وإنك ذاهب معهم إلى القصر.", "شكر حسن الغول، وأخذ شعلة من النار ومضى.", "لكنه لم يبتعد كثيرًا حتى سمع...", "دُم! دُم! دُم!", "كانت الأرض تهتز تحت أقدام ثقيلة!"]},
+    {"img": "images/h09.jpg", "title": "لقاء الغيلان الأربعين", "text": ["ظهر أربعون غولًا أمام حسن!", "وصاح أكبرهم:", "– من أنت؟ وماذا تفعل هنا؟", "قال حسن بهدوء:", "– كنت عند أبيكم.", "– عند أبينا؟ وماذا تريد؟", "– أبحث عنكم! ألم نتفق على الذهاب إلى قصر الملك؟", "نظر الغيلان بعضهم إلى بعض.", "ثم صاح أحدهم:", "– عجيب! كأنك تعرف ما في رؤوسنا!", "وقال كبيرهم:", "– حسنًا، تعال معنا!"]},
+    {"img": "images/h10.jpg", "title": "الحصى الأربعون", "text": ["وصل حسن والغيلان إلى قصر الملك.", "قال أحدهم:", "– سنقفز جميعًا فوق السور!", "لكن حسنًا قال:", "– انتظروا! إذا قفزتم جميعًا، اهتزت الأرض واستيقظ الحراس!", "سأله كبيرهم:", "– وماذا نفعل إذن؟", "قال حسن:", "– أعطوني أربعين حصاة. سأصعد أولًا، وكلما رميت حصاة، يصعد واحد منكم.", "أعجبت الغيلان بالفكرة.", "فجمع كل واحد حصاة وأعطاها لحسن.", "ثم تسلق حسن السور واختفى خلفه."]},
+    {"img": "images/h11b.jpg", "title": "فوق سور القصر", "text": ["صعد حسن فوق السور، ونظر إلى الغيلان المنتظرة في الأسفل.", "ثم رمى الحصاة الأولى.", "فقفز الغول الأول!", "لكن حسنًا كان ينتظره، فباغته بسيفه وتغلب عليه.", "ثم رمى الحصاة الثانية.", "وقفز الغول الثاني!", "وكان له ما كان للأول.", "وهكذا، حصاة بعد حصاة، وغولًا بعد غول، حتى تغلب حسن على الغيلان الأربعين جميعًا.", "ثم قال وهو يلتقط أنفاسه:", "– والآن، لنرَ ما في هذا القصر العجيب!"]},
+    {"img": "images/h12.jpg", "title": "الأميرات الثلاث", "text": ["دخل حسن القصر بحذر، وأخذ يتنقل بين غرفه الواسعة.", "وفي إحدى الغرف، رأى أميرة جميلة نائمة.", "فقال:", "– ليتك تكونين من نصيب أخي محمد!", "وفي الغرفة الثانية، رأى أميرة أخرى.", "فقال:", "– وليتك تكونين من نصيب أخي علي!", "أما في الغرفة الثالثة، فوجد فتاة يغطي شعرها الأسود وجهها كله.", "وفجأة تقلبت في نومها، فانزاح الشعر عن وجهها.", "وإذا بها جميلة كالقمر!", "كانت تلك الأميرة حبقة، أصغر بنات الملك.", "ابتسم حسن وقال:", "– وأنت، ليتك تكونين من نصيبي!", "وكان في إصبعها خاتم جميل، فبدّل خاتمه بخاتمها."]},
+    {"img": "images/h13.jpg", "title": "السر تحت القصر", "text": ["وبينما كان حسن يتجول في القصر، سمع همسًا خافتًا يأتي من أسفل الدرج.", "اقترب بحذر وأصغى.", "كان هناك شخصان يتآمران على الملك، وينتظران وصول الغيلان إلى القصر!", "أسرع حسن إلى الغرفة السرية، وفاجأ المتآمرين قبل أن يتمكنا من تنفيذ خطتهما.", "ثم عاد إلى ساحة القصر، وطبع كفه على الجدار علامة على وجوده.", "وبعدها خرج مسرعًا نحو الجبل.", "ولما وصل إلى الخيمة، وجد أخويه ما زالا نائمين!", "فأشعل شمعته وجلس يقرأ عند قبر أبيه كأن شيئًا لم يحدث."]},
+    {"img": "images/h14.jpg", "title": "صاحب الكف", "text": ["في الصباح، اكتشف الملك ما حدث في قصره.", "ورأى علامة الكف على الجدار.", "فقال:", "– من أنقذ قصري؟ أريد أن أعرفه!", "وأمر المنادي أن ينادي في المدينة:", "– من يثبت أنه صاحب الكف، فله عند الملك ما يطلب!", "جاء الناس من كل مكان.", "وضع هذا يده على الجدار، وجرب ذاك يده أيضًا.", "لكن لا يد طابقت العلامة!", "حتى قال أحد الحراس:", "– يا مولاي، هناك ثلاثة شبان غرباء يقيمون فوق الجبل.", "فأمر الملك بإحضارهم."]},
+    {"img": "images/h15.jpg", "title": "الشاطر حسن أمام الملك", "scene": 15, "text": ["وصل الإخوة الثلاثة إلى القصر.", "قال الملك:", "– من منكم يعرف ما حدث هنا الليلة الماضية؟", "تقدم حسن وقال:", "– أنا يا مولاي.", "تعجب الملك.", "– أنت؟!", "– نعم، ولكنني أطلب منك الأمان.", "قال الملك:", "– لك الأمان."]},
+    {"img": "images/h15.jpg", "scene": 15, "text": ["فوضع حسن كفه على الجدار.", "ويا للعجب!", "انطبقت يده تمامًا على العلامة!", "ثم حكى للملك قصة الشمعة والغول والأربعين حصاة.", "ولما انتهى، نهض الملك وعانقه.", "– لقد أنقذت قصري يا شاطر حسن! اطلب ما تشاء!"]},
+    {"img": "images/h16.jpg", "title": "العودة إلى الجبل", "text": ["قال حسن:", "– نحن ثلاثة إخوة، ولك ثلاث بنات. وأتمنى أن نتزوجهن إذا رضين بنا.", "فرح الملك، ووافقت الأميرات الثلاث.", "لكن حسنًا قال:", "– وعدنا أبانا أن نقيم عند قبره ثلاثة أشهر، ولم تنتهِ المدة بعد.", "قال الملك:", "– أوفوا بوعدكم، وسننتظركم.", "فعاد الإخوة إلى الجبل، وأكملوا الأيام التي وعدوا أباهم بها.", "وبعد ثلاثة أشهر، رجعوا إلى القصر، وتزوج محمد الأميرة الكبرى، وعلي الأميرة الوسطى، وحسن الأميرة حبقة.", "وبعد مدة، ودعوا الملك وانطلقوا إلى بلادهم.", "وكانوا يظنون أن مغامراتهم قد انتهت...", "لكن في الطريق، عند نهر تحيط به الأشجار، كان هناك مارد ينتظر!"]}
+  ]
+};
+
+const $ = id => document.getElementById(id);
+const ar = n => n.toLocaleString("ar-EG");
+const bird = `<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3c3 4 4 6.5 4 8.5a4 4 0 0 1-8 0C12 9.5 13 7 16 3z" fill="currentColor"/><rect x="12" y="15" width="8" height="12" rx="1.5" fill="currentColor" opacity=".55"/><rect x="9" y="27" width="14" height="2.4" rx="1.2" fill="currentColor"/></svg>`;
+
+let i = 0;
+try { const h = parseInt((location.hash.match(/^#page-(\d+)$/) || [])[1], 10); if (h >= 1 && h <= BOOK.pages.length) i = h - 1; } catch (e) {}
+
+function para(t){
+  if (typeof t === "object" && t.lesson) return `<p class="lesson">${t.lesson}</p>`;
+  if (typeof t === "object" && t.verse) return `<div class="verse">${t.verse.map(l => `<p>${l}</p>`).join("")}</div>`;
+  return `<p${t.startsWith("–") ? ' class="dlg"' : ""}>${t}</p>`;
+}
+
+function render(){
+  const p = BOOK.pages[i];
+  let html;
+  if (p.type === "cover") {
+    html = `<div class="cover">${BOOK.kicker ? `<p class="kicker">${BOOK.kicker}</p>` : ""}<h1>${BOOK.title}</h1><div class="ornament"><span></span>${bird}<span></span></div><p class="author">${BOOK.credit} <b>${BOOK.author}</b></p></div>`;
+    $("folio").textContent = "";
+  } else {
+    html = `<div class="story">${p.title ? `<h2 class="sec">${p.title}</h2>` : ""}${(p.text || []).map(para).join("")}</div>`;
+    $("folio").textContent = ar(i);
+  }
+  $("text").innerHTML = html;
+  if (p.img) {
+    $("pic").hidden = false; $("ph").hidden = true;
+    $("pic").src = p.img; $("pic").alt = p.alt || ""; $("pic").style.objectPosition = p.pos || "";
+  } else {
+    $("pic").hidden = true; $("ph").hidden = false;
+    $("ph").innerHTML = `${bird}<p>رسم هذه الصفحة قادم</p>`;
+  }
+  $("count").textContent = i === 0 ? "الغلاف" : `صفحة ${ar(i)} من ${ar(BOOK.pages.length - 1)}`;
+  $("prev").disabled = i === 0;
+  $("next").disabled = i === BOOK.pages.length - 1;
+  const next = BOOK.pages[i + 1]; if (next && next.img) { const im = new Image(); im.src = next.img; }
+  fit(); setTimeout(fit, 250);
+}
+
+// Long pages: shrink the story text until it fits the page (landscape layout only).
+const stacked = matchMedia("(max-width:640px), (orientation:portrait) and (max-width:900px)");
+function fit(){
+  const story = document.querySelector(".story");
+  if (!story) return;
+  story.style.fontSize = "";
+  if (stacked.matches) return;
+  const page = story.closest(".text-page"), cs = getComputedStyle(page);
+  const avail = page.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom) - 44;
+  let fs = parseFloat(getComputedStyle(story).fontSize);
+  while (story.scrollHeight > avail && fs > 11) { fs -= 0.5; story.style.fontSize = fs + "px"; }
+}
+addEventListener("resize", fit);
+addEventListener("load", fit);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+if (document.fonts) { document.fonts.addEventListener("loadingdone", fit); document.fonts.addEventListener("loadingerror", fit); }
+setTimeout(fit, 1500); setTimeout(fit, 4000);
+
+function go(d){
+  const n = i + d; if (n < 0 || n >= BOOK.pages.length) return;
+  const book = $("book");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) { i = n; render(); setHash(); return; }
+  book.classList.add("turning");
+  setTimeout(() => { i = n; render(); setHash(); requestAnimationFrame(() => book.classList.remove("turning")); }, 350);
+}
+function setHash(){ try { history.replaceState(null, "", i ? `#page-${i + 1}` : location.pathname + location.search); } catch (e) {} }
+
+$("next").onclick = () => go(1);
+$("prev").onclick = () => go(-1);
+// Arabic books turn right to left: the left arrow moves forward.
+addEventListener("keydown", e => {
+  if (e.key === "ArrowLeft" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); go(1); }
+  if (e.key === "ArrowRight" || e.key === "PageUp") { e.preventDefault(); go(-1); }
+});
+let sx = null, sy = null;
+$("book").addEventListener("touchstart", e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+$("book").addEventListener("touchend", e => {
+  if (sx === null) return;
+  const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(dx > 0 ? 1 : -1);
+  sx = sy = null;
+}, { passive: true });
+addEventListener("hashchange", () => { const h = parseInt((location.hash.match(/^#page-(\d+)$/) || [])[1], 10); if (h >= 1 && h <= BOOK.pages.length && h - 1 !== i) { i = h - 1; render(); } });
+render();
+</script>

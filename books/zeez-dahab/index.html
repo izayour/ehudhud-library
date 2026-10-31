@@ -1,0 +1,269 @@
+<title>زيز دهب</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Baloo+Bhaijaan+2:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one landscape picture-book spread centred on a sky-toned stage — illustration page on the left, text page on the right, page controls beneath. */
+:root{
+  --stage:#D6E4EC;          /* soft morning sky behind the book */
+  --stage-ink:#2E4250;      /* controls on the stage */
+  --paper:#FBF6EA;          /* the book page itself (same in both themes) */
+  --ink:#3B2F22;            /* story text */
+  --ink-soft:#6E5C45;       /* author line, captions */
+  --gold:#A9790F;           /* the golden beetle */
+  --spine:rgba(59,47,34,.18);
+  --btn:#FBF6EA;
+  --btn-ink:#3B2F22;
+  --display:'Lalezar','Baloo Bhaijaan 2',Tahoma,sans-serif;
+  --text:'Baloo Bhaijaan 2',Tahoma,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --stage:#16212B; --stage-ink:#C9D7E1; --btn:#24323E; --btn-ink:#F1E9D6; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --stage:#16212B; --stage-ink:#C9D7E1; --btn:#24323E; --btn-ink:#F1E9D6; color-scheme:dark;
+}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{
+  background:var(--stage);color:var(--stage-ink);font-family:var(--text);
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:16px;box-sizing:border-box;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+}
+.book{
+  width:min(1200px,100%,calc((100vh - 120px) * 1.6));
+  width:min(1200px,100%,calc((100dvh - 120px) * 1.6));
+  aspect-ratio:16/10;max-width:100%;
+  display:grid;grid-template-columns:46.6% 1fr;
+  direction:ltr;                        /* picture on the left, text page on the right */
+  background:var(--paper);border-radius:6px 14px 14px 6px;
+  box-shadow:0 1px 0 rgba(0,0,0,.04),0 18px 40px -18px rgba(20,35,48,.45),0 2px 6px rgba(20,35,48,.12);
+  overflow:hidden;position:relative;
+  touch-action:pan-y;
+}
+.text-page{
+  direction:rtl;min-width:0;position:relative;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(20px,6%,72px);
+  background:
+    radial-gradient(120% 90% at 30% 20%,rgba(255,255,255,.55),transparent 60%),
+    var(--paper);
+  color:var(--ink);
+}
+.pic-page{position:relative;min-width:0;background:#EAF1F5;order:-1}
+.pic-page img{width:100%;height:100%;object-fit:cover;display:block}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  background:radial-gradient(100% 80% at 50% 40%,#F4EEDC,#E6EEF2);color:var(--gold);direction:rtl;text-align:center;padding:24px}
+.ph svg{width:clamp(36px,5vw,64px);height:auto;opacity:.75}
+.ph p{margin:0;font-size:clamp(.95rem,1.5vw,1.25rem);color:var(--ink-soft)}
+.pic-page::before{ /* the spine shadow where the pages meet */
+  content:"";position:absolute;inset:0 0 0 auto;width:28px;z-index:1;
+  background:linear-gradient(270deg,var(--spine),transparent);
+  pointer-events:none;
+}
+.fade{transition:opacity .35s ease}
+.turning .fade{opacity:0}
+
+/* cover */
+.cover{display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(10px,2.4vw,26px)}
+.cover h1{
+  font-family:var(--display);font-weight:400;margin:0;line-height:1.05;
+  font-size:clamp(3rem,9vw,7.5rem);color:var(--gold);
+  text-shadow:0 2px 0 rgba(255,255,255,.7);
+  text-wrap:balance;
+}
+.ornament{display:flex;align-items:center;gap:12px;color:var(--gold)}
+.ornament span{display:block;width:clamp(36px,6vw,80px);height:2px;background:currentColor;opacity:.5;border-radius:2px}
+.ornament svg{width:clamp(18px,2.2vw,26px);height:auto}
+.author{margin:0;font-size:clamp(1.05rem,2.1vw,1.7rem);color:var(--ink-soft);font-weight:500}
+.author b{color:var(--ink);font-weight:700}
+
+/* story pages */
+.story{display:flex;flex-direction:column;gap:.55em;font-size:clamp(1rem,1.8vw,1.6rem)}
+.story p{margin:0;font-size:1em;line-height:1.75;font-weight:500;text-wrap:pretty}
+.story p.dlg{padding-inline-start:1.1em;text-indent:-1.1em}
+.folio{position:absolute;bottom:clamp(10px,2.5%,22px);inset-inline:0;text-align:center;font-size:clamp(.85rem,1.3vw,1.05rem);color:var(--ink-soft)}
+
+/* controls */
+.controls{display:flex;align-items:center;gap:20px;direction:ltr}
+.controls button{
+  font:inherit;font-weight:600;font-size:1.05rem;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:999px;border:0;cursor:pointer;
+  background:var(--btn);color:var(--btn-ink);
+  box-shadow:0 2px 6px rgba(20,35,48,.18);
+  transition:transform .15s ease,opacity .15s ease;
+}
+.controls button:hover:not(:disabled){transform:translateY(-1px)}
+.controls button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.controls button:disabled{opacity:.35;cursor:default}
+.count{min-width:6.5em;text-align:center;font-size:1rem;font-variant-numeric:tabular-nums}
+
+@media (max-width:640px), (orientation:portrait) and (max-width:900px){
+  .book{display:flex;flex-direction:column;aspect-ratio:auto;width:100%;border-radius:12px}
+  .pic-page{height:min(56vh,120vw)}
+  .pic-page::before{display:none}
+  .text-page{padding:28px 22px 44px}
+}
+@media (prefers-reduced-motion:reduce){.fade,.controls button{transition:none}}
+</style>
+
+<main class="book" id="book" aria-live="polite">
+  <section class="text-page"><div class="fade" id="text"></div><p class="folio" id="folio"></p></section>
+  <figure class="pic-page" style="margin:0"><img class="fade" id="pic" alt=""><div class="ph fade" id="ph" hidden></div></figure>
+</main>
+
+<nav class="controls" aria-label="التنقل بين الصفحات">
+  <button id="next" type="button" aria-label="الصفحة التالية">‹ التالي</button>
+  <span class="count" id="count" dir="rtl"></span>
+  <button id="prev" type="button" aria-label="الصفحة السابقة">السابق ›</button>
+</nav>
+
+<script>
+// The book's pages. Add a story page as { img: "images/p01.jpg", alt: "...", text: ["paragraph", "paragraph"] }.
+const BOOK = {
+  title: "زيز دهب",
+  author: "إياد زيعور",
+  pages: [
+    { type: "cover", img: "images/p00.jpg", alt: "صبيّ يقف على تلّة خضراء ويرفع يده نحو زيز ذهبيّ يطير في السماء مربوطًا بخيط" },
+    { img: "images/p01.jpg", alt: "فتى قروي حافي القدمين يقف على درب ترابي بين أشجار الزيتون والخزامى، ممسكًا بخيط مربوط بزيز لامع يطير فوقه", text: [
+      "وقفت السيارة الفاخرة أمام الفتى القروي ونزل منها رجل في غاية الأناقة وهو ما زال يكمل نقاشه مع زوجته التي أطلت برأسها من النافذة، ثم التفت الرجل إلى زوجته التي كانت تقول:",
+      "– لماذا يريد سامي هذه الحشرة ونحن نحضر له أغلى الألعاب من أوروبا",
+      "– “يكفي أنه يريدها ... كم سيكون ثمنها ... سأحضرها له...”، أجاب الرجل الذي توجه إلى الفتى القروي الذي كان يلعب بحشرة لماعة ربطها بخيط وهي تحاول أن تطير وتهرب وهو يضحك عليها وقال له:"
+    ] },
+    { img: "images/p01b.jpg", alt: "الأب الأنيق ينحني أمام الفتى القروي ويده في جيبه، والفتى يبتسم ممسكًا بخيط الزيز، وخلفهما جبل صخري شاهق والأم وسامي في السيارة", text: [
+      "– كم تريد ثمنا لهذه الحشرة؟",
+      "– “إنها ليست حشرة، هذا زيز ذهب”، أجاب الفتى",
+      "– أعرف ما هي فقد كنت ألعب بها وأنا بسنك ... فقط أخبرني كم تريد",
+      "– “لا أعرف فأنا لم أشترِها ... فقد تبعتها إلى بيتها في قمة الجبل هناك وأمسكتها” وأشار الفتى بيده إلى الجبل المقابل وقد بدا مرتفعا ووعرا",
+      "– نعم أعرف هذا الجبل ... أنا مشغول حاليا ... اطلب ما تريد ..."
+    ] },
+    { img: "images/p02d.jpg", alt: "سامي ببدلته الأنيقة ينزل من سيارة خضراء قديمة ويمد يده نحو الفتى القروي، والزيز يطير في السماء ووالداه في السيارة", text: [
+      "في هذه الأثناء، نزل الفتى سامي من السيارة وتقدم نحو القروي الذي بدا من عمره. كان وجه سامي بلا ملامح تقريبا وكأنه لم يضحك ولم يبك من سنين ... أشبه بالرجل الآلي، خطواته متناسقة وعيونه جامدة.",
+      "وبدون أي كلمة ... مد يده وأمسك بالخيط الذي يمسكه الفتى القروي برخاوة مثل رخاوة تعابير وجهه. لم يفوّت الزيز الفرصة فاستجمع قواه وانطلق مفلتا الخيط من يد سامي الذي وقف يراقبه وهو يحلق عاليا ... بدون أي تعابير."
+    ] },
+    { img: "images/p04.jpg", alt: "الفتى القروي وسامي يركضان معًا على درب ترابي بين أشجار الزيتون والخزامى نحو الزيز الذي يطير بعيدًا في السماء", text: [
+      "– “اركض يجب أن نقبض عليه” صرخ القروي بوجه سامي وقبل أن يسمع رده، أمسك بيده وجره بسرعة، فركضا معا باتجاه الوادي وقفزا ...",
+      "هناك في الجو وفي جزء من الثانية قبل أن يسقط سامي على الأرض، بدأ عقله يتحرك بعد أن كان متجمدا. هو معتاد على القفز خلال ألعاب الجمباز التي يجيدها، ولكن للمرة الأولى هو يقفز ولا يعرف على ماذا سيقع. أحس برعب كبير وهو يهوي، بدا الموقف غريبا جدا عليه ..."
+    ] },
+    { img: "images/p05.jpg", alt: "الفتى القروي وسامي يقفزان في الهواء فوق وادٍ صخري واسع بين التلال، والزيز يطير أمامهما", text: [
+      "هوى على قدميه، أحس بألم الصدمة لكنه كان ألما محتملا.",
+      "وأقوى من هذا الألم كان إحساسه بالدماء والقلب يضخها مجددا في أطرافه بعد أن حبسها من الخوف. تمالك أنفاسه ووقف ... فأحس بلذة الإثارة التي حلت محل الرعب لما عرف أنه بخير. نظر وراءه، فرأى أمه تصرخ بينما بدا أبوه هادئا. وقبل أن يقرر ماذا يجب أن يفعل، أمسكه القروي مرة ثانية وبدآ بالركض والقفز. وفي كل مرة كان سامي ينظر وراءه، كانت صورة أبويه تصغر وتصغر حتى اختفت بين الأشجار.",
+      "لحظات من الركض والقفز ونسي سامي كل شيء ولم يعد يرى إلا زيز الذهب أمامه. أحس بحرية لم يحس بها من قبل. حين تذهب حيث تريد ولا تتبع الطريق، فإن كل خطوة تفتح لك عالما جديدا وأرضا لم تطأها من قبل. كان الوادي وعرا تغطيه الأشواك، تمزقت ثيابه الفاخرة ولم يبال. وقع وسالت منه الدماء، ولكنها بدت جميلة ...المهم أن يحصل على الزيز."
+    ] },
+    { img: "images/p06b.jpg", alt: "سامي وعباس يجلسان منهكين على صخرة في قعر وادٍ صخري، ثيابهما ممزقة ومغبرة، وسامي يسند رأسه على كتف صاحبه", text: [
+      "ولما وصلا إلى قعر الوادي، لأول مرة تكلم الفتيان:",
+      "– “حسنا ... ما اسمك، ماذا تريد مني، ولم جررتني معك؟”، سأل سامي الفتى وهو يلتقط أنفاسه من التعب",
+      "– أنا اسمي عباس وأنت؟",
+      "– أنا سامي",
+      "– “حسنا يا سامي، أنا أحتاجك للتسلق، يجب أن ترفعني لنصل إلى هناك”، وأشار إلى قمة الجبل الذي بدا شاهقا"
+    ] },
+    { img: "images/p07.jpg", alt: "عباس يقف على صخرة عالية ويشد سامي من يده ليساعده على التسلق، وثيابهما ممزقة والوادي الصخري خلفهما", text: [
+      "أصيب سامي بالرهبة من علو الجبل ووعورته، وأحس أنه لن يقدر عليه. ولكن لم يكن عنده خيارات، فمضى ... مرة يرفع صاحبه ومرة يرفعه هو، وحينا ينزلق فيمسكه صاحبه وحينا آخر يمسكه هو. وانتهى النهار ليصل الفتيان عند الغروب إلى قمة الجبل. قليل من التفتيش ووجدا الزيز حيث كان أول مرة.",
+      "أمسك سامي الزيز بالخيط الذي ما زال يربطه ونظر إلى صاحبه وقال:",
+      "– ثم ماذا يا عباس؟",
+      "– نرجع إلى بيوتنا",
+      "– وكيف نرجع وقد أطبق الظلام؟، تساءل سامي قلقا",
+      "– نمشي إلى المقلب الثاني للجبل، الطريق سهلة إلى حيث نجد طريق معبدة للسيارات",
+      "– ماذا تقول؟ كل هذا العناء ... نزلنا إلى الوادي بين الأشواك وتسلقنا الصخور ... وكان بإمكاننا أن نأتي إلى هذا الطريق القريب بسيارة والدي!",
+      "– لم يخطر ذلك ببالي ... فأنا غير متعود على أن تكون سيارة بخدمتي"
+    ] },
+    { img: "images/p08.jpg", alt: "سامي وعباس يمشيان معًا في الغسق بين الصخور، سامي يمسك الزيز بالخيط وعباس يشير إلى السيارة الخضراء المنتظرة بأضوائها على الطريق المتعرج تحت سماء مرصعة بالنجوم", text: [
+      "مشيا سوية صوب الطريق المعبد، وكانت المفاجأة أن يجدا سيارة بانتظارهما في أقرب نقطة لقمة الجبل.",
+      "اقتربا معا وقبل أن يصلا، قال عباس:",
+      "– يبدو أن والدك بالفعل يعرف الجبل جيدا حتى عرف أين ينتظرنا",
+      "– نعم، هو يحب البرية، هو دائما يحدثني عن مغامراته وهو صغير ... لقد كان فقيرا في طفولته، بعكس أمي التي ولدت ثرية.",
+      "كان في فم سامي كلام كثير عن أمه التي تخنقه بما تظنه عناية له، وعن وحدته في القصر الذي يعيش فيه، ولكن عباس قاطع أفكاره:",
+      "– هل أنت نادم على هذه الرحلة بكل حال؟",
+      "– أبدا ... أبدا .. هي من ألذ ما تذوقت",
+      "– على فكرة، لا بأس بك كشخص يلبس مثل هذه الثياب ... تملك لياقة كبيرة وأنا سررت برفقتك لي"
+    ] },
+    { img: "images/p09.jpg", pos: "40% 50%", alt: "سامي وعباس يقفان متعانقين وثيابهما ممزقة ومتسخة، يضحكان وهما ينظران إلى الزيز يطير بعيدا، وخلفهما الوادي والسيارة على الطريق", text: [
+      "نظرا إلى بعضهما وابتسما، وكأن كل واحد وجد ما يبحث عنه في الآخر ... وكأنهما لا يريدان أن يتفرقا.",
+      "– “تعرف ماذا ... ليتنا لم نحظ بالزيز ... ماذا سنفعل غدا”، قال سامي بحسرة.",
+      "– معك حق",
+      "ثم نظر سامي إلى الزيز الذي يمسكه وبدا كمن يقوم بتفكير عميق، إلى أن ... وبدون أي إنذار ... أطلق سراحه.",
+      "نظر الفتيان إلى الزيز وهو يبتعد، ثم التفتا إلى بعضهما البعض وضحكا ضحكة عميقة متناغمة ...",
+      "من على الطريق، سمع والد سامي الضحكات فتراقص قلبه فرحا ... لطالما انتظر أن يسمع مثل هذا الصوت من ابنه ... هو يعرف ماذا تعني هذه الضحكة ... إنها لحن الأرواح الفرحة."
+    ] }
+  ]
+};
+
+const $ = id => document.getElementById(id);
+const ar = n => n.toLocaleString("ar-EG");
+const beetle = `<svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="13.5" rx="6" ry="7.5" fill="currentColor"/><circle cx="12" cy="5" r="2.6" fill="currentColor"/><path d="M12 7v14" stroke="#FBF6EA" stroke-width="1.2"/><path d="M6.5 10 3 8M6 14H2.5M6.5 18 3.5 20.5M17.5 10 21 8M18 14h3.5M17.5 18l3 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg>`;
+
+let i = 0;
+try { const h = parseInt((location.hash.match(/^#page-(\d+)$/) || [])[1], 10); if (h >= 1 && h <= BOOK.pages.length) i = h - 1; } catch (e) {}
+
+function render(){
+  const p = BOOK.pages[i];
+  let html;
+  if (p.type === "cover") {
+    html = `<div class="cover"><h1>${BOOK.title}</h1><div class="ornament"><span></span>${beetle}<span></span></div><p class="author">تأليف <b>${BOOK.author}</b></p></div>`;
+    $("folio").textContent = "";
+  } else {
+    html = `<div class="story">${(p.text || []).map(t => `<p${t.startsWith("–") ? ' class="dlg"' : ""}>${t}</p>`).join("")}</div>`;
+    $("folio").textContent = ar(i);
+  }
+  $("text").innerHTML = html;
+  if (p.img) {
+    $("pic").hidden = false; $("ph").hidden = true;
+    $("pic").src = p.img; $("pic").alt = p.alt || ""; $("pic").style.objectPosition = p.pos || "";
+  } else {
+    $("pic").hidden = true; $("ph").hidden = false;
+    $("ph").innerHTML = `${beetle}<p>رسم هذه الصفحة قادم</p>`;
+  }
+  $("count").textContent = i === 0 ? "الغلاف" : `صفحة ${ar(i)} من ${ar(BOOK.pages.length - 1)}`;
+  $("prev").disabled = i === 0;
+  $("next").disabled = i === BOOK.pages.length - 1;
+  const next = BOOK.pages[i + 1]; if (next && next.img) { const im = new Image(); im.src = next.img; }
+  fit();
+}
+
+// Long pages: shrink the story text until it fits the page (landscape layout only).
+const stacked = matchMedia("(max-width:640px), (orientation:portrait) and (max-width:900px)");
+function fit(){
+  const story = document.querySelector(".story");
+  if (!story) return;
+  story.style.fontSize = "";
+  if (stacked.matches) return;
+  const page = story.closest(".text-page"), cs = getComputedStyle(page);
+  const avail = page.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom) - 18;
+  let fs = parseFloat(getComputedStyle(story).fontSize);
+  while (story.offsetHeight > avail && fs > 11) { fs -= 0.5; story.style.fontSize = fs + "px"; }
+}
+addEventListener("resize", fit);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+
+function go(d){
+  const n = i + d; if (n < 0 || n >= BOOK.pages.length) return;
+  const book = $("book");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) { i = n; render(); setHash(); return; }
+  book.classList.add("turning");
+  setTimeout(() => { i = n; render(); setHash(); requestAnimationFrame(() => book.classList.remove("turning")); }, 350);
+}
+function setHash(){ try { history.replaceState(null, "", i ? `#page-${i + 1}` : location.pathname + location.search); } catch (e) {} }
+
+$("next").onclick = () => go(1);
+$("prev").onclick = () => go(-1);
+// Arabic books turn right to left: the left arrow moves forward.
+addEventListener("keydown", e => {
+  if (e.key === "ArrowLeft" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); go(1); }
+  if (e.key === "ArrowRight" || e.key === "PageUp") { e.preventDefault(); go(-1); }
+});
+let sx = null, sy = null;
+$("book").addEventListener("touchstart", e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+$("book").addEventListener("touchend", e => {
+  if (sx === null) return;
+  const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(dx > 0 ? 1 : -1);
+  sx = sy = null;
+}, { passive: true });
+addEventListener("hashchange", () => { const h = parseInt((location.hash.match(/^#page-(\d+)$/) || [])[1], 10); if (h >= 1 && h <= BOOK.pages.length && h - 1 !== i) { i = h - 1; render(); } });
+render();
+</script>

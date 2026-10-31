@@ -1,0 +1,70 @@
+{
+  "currency": "CAD",
+  "books": [
+    {
+      "id": "zeez-dahab",
+      "title": "زيز دهب",
+      "author": "إياد زيعور",
+      "credit": "",
+      "lang": "ar",
+      "origin": "original",
+      "pages": 9,
+      "pictures": 10,
+      "status": "illustrated",
+      "onEhudhud": false,
+      "price": null
+    },
+    {
+      "id": "al-tair-al-akhdar",
+      "title": "الطائر الأخضر",
+      "author": "إياد زيعور",
+      "credit": "إعداد",
+      "lang": "ar",
+      "origin": "folk tale (retold)",
+      "pages": 19,
+      "pictures": 20,
+      "status": "illustrated",
+      "onEhudhud": false,
+      "price": null
+    },
+    {
+      "id": "ard-al-shumus",
+      "title": "أرض الشموس الصغيرة",
+      "author": "إياد زيعور",
+      "credit": "تأليف",
+      "lang": "ar",
+      "origin": "original",
+      "pages": 46,
+      "pictures": 43,
+      "status": "illustrated",
+      "onEhudhud": true,
+      "price": null
+    },
+    {
+      "id": "al-shater-hassan",
+      "title": "الشاطر حسن",
+      "author": "إياد زيعور",
+      "credit": "إعداد",
+      "lang": "ar",
+      "origin": "folk tale (retold)",
+      "pages": 17,
+      "pictures": 17,
+      "status": "illustrated",
+      "onEhudhud": false,
+      "price": null
+    },
+    {
+      "id": "conqueror-of-the-desert",
+      "title": "The Conqueror of the Desert",
+      "author": "Iyad Zayour",
+      "credit": "Written by",
+      "lang": "en",
+      "origin": "original",
+      "pages": 42,
+      "pictures": 25,
+      "status": "illustrated",
+      "onEhudhud": false,
+      "price": null
+    }
+  ]
+}

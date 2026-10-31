@@ -1,0 +1,352 @@
+<title>الطائر الأخضر</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lalezar&family=Baloo+Bhaijaan+2:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one landscape picture-book spread on a forest-mist stage — illustration page on the left, text page on the right, page controls beneath. */
+:root{
+  --stage:#D8E5D6;          /* misty green of the enchanted forest */
+  --stage-ink:#2C4434;      /* controls on the stage */
+  --paper:#FBF6EA;          /* the book page itself (same in both themes) */
+  --ink:#33302A;            /* story text */
+  --ink-soft:#66604F;       /* author line, captions */
+  --leaf:#2E7247;           /* the green bird */
+  --spine:rgba(51,48,42,.18);
+  --btn:#FBF6EA;
+  --btn-ink:#33302A;
+  --display:'Lalezar','Baloo Bhaijaan 2',Tahoma,sans-serif;
+  --text:'Baloo Bhaijaan 2',Tahoma,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --stage:#142019; --stage-ink:#C6D9CB; --btn:#22332A; --btn-ink:#F1E9D6; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --stage:#142019; --stage-ink:#C6D9CB; --btn:#22332A; --btn-ink:#F1E9D6; color-scheme:dark;
+}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{
+  background:var(--stage);color:var(--stage-ink);font-family:var(--text);
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:16px;box-sizing:border-box;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+}
+.book{
+  width:min(1200px,100%,calc((100vh - 120px) * 1.6));
+  width:min(1200px,100%,calc((100dvh - 120px) * 1.6));
+  aspect-ratio:16/10;max-width:100%;
+  display:grid;grid-template-columns:46.6% 1fr;
+  direction:ltr;                        /* picture on the left, text page on the right */
+  background:var(--paper);border-radius:6px 14px 14px 6px;
+  box-shadow:0 1px 0 rgba(0,0,0,.04),0 18px 40px -18px rgba(20,40,28,.45),0 2px 6px rgba(20,40,28,.12);
+  overflow:hidden;position:relative;
+  touch-action:pan-y;
+}
+.text-page{
+  direction:rtl;min-width:0;position:relative;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(20px,6%,72px);
+  background:
+    radial-gradient(120% 90% at 30% 20%,rgba(255,255,255,.55),transparent 60%),
+    var(--paper);
+  color:var(--ink);
+}
+.pic-page{position:relative;min-width:0;background:#E7EFE4;order:-1}
+.pic-page img{width:100%;height:100%;object-fit:cover;display:block}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  background:radial-gradient(100% 80% at 50% 40%,#F4EEDC,#E1ECDD);color:var(--leaf);direction:rtl;text-align:center;padding:24px}
+.ph svg{width:clamp(40px,6vw,76px);height:auto;opacity:.7}
+.ph p{margin:0;font-size:clamp(.95rem,1.5vw,1.25rem);color:var(--ink-soft)}
+.pic-page::before{ /* the spine shadow where the pages meet */
+  content:"";position:absolute;inset:0 0 0 auto;width:28px;z-index:1;
+  background:linear-gradient(270deg,var(--spine),transparent);
+  pointer-events:none;
+}
+.fade{transition:opacity .35s ease}
+.turning .fade{opacity:0}
+
+/* cover */
+.cover{display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(10px,2.2vw,24px)}
+.cover .kicker{margin:0;font-size:clamp(.95rem,1.6vw,1.3rem);color:var(--ink-soft);letter-spacing:.02em}
+.cover h1{
+  font-family:var(--display);font-weight:400;margin:0;line-height:1.05;
+  font-size:clamp(2.8rem,8vw,6.8rem);color:var(--leaf);
+  text-shadow:0 2px 0 rgba(255,255,255,.7);
+  text-wrap:balance;
+}
+.ornament{display:flex;align-items:center;gap:12px;color:var(--leaf)}
+.ornament span{display:block;width:clamp(36px,6vw,80px);height:2px;background:currentColor;opacity:.45;border-radius:2px}
+.ornament svg{width:clamp(22px,2.6vw,32px);height:auto}
+.author{margin:0;font-size:clamp(1.05rem,2.1vw,1.7rem);color:var(--ink-soft);font-weight:500}
+.author b{color:var(--ink);font-weight:700}
+
+/* story pages */
+.story{display:flex;flex-direction:column;gap:.55em;font-size:clamp(1rem,1.8vw,1.6rem)}
+.story p{margin:0;font-size:1em;line-height:1.75;font-weight:500;text-wrap:pretty}
+.story p.dlg{padding-inline-start:1.1em;text-indent:-1.1em}
+.verse{margin:.2em 0;padding:.5em 1em;border-inline-start:3px solid var(--leaf);background:rgba(46,114,71,.07);border-radius:4px 10px 10px 4px}
+.verse p{font-weight:600;color:var(--leaf);line-height:1.7}
+.folio{position:absolute;bottom:clamp(10px,2.5%,22px);inset-inline:0;text-align:center;font-size:clamp(.85rem,1.3vw,1.05rem);color:var(--ink-soft)}
+
+/* controls */
+.controls{display:flex;align-items:center;gap:20px;direction:ltr}
+.controls button{
+  font:inherit;font-weight:600;font-size:1.05rem;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:999px;border:0;cursor:pointer;
+  background:var(--btn);color:var(--btn-ink);
+  box-shadow:0 2px 6px rgba(20,40,28,.18);
+  transition:transform .15s ease,opacity .15s ease;
+}
+.controls button:hover:not(:disabled){transform:translateY(-1px)}
+.controls button:focus-visible{outline:3px solid var(--leaf);outline-offset:3px}
+.controls button:disabled{opacity:.35;cursor:default}
+.count{min-width:6.5em;text-align:center;font-size:1rem;font-variant-numeric:tabular-nums}
+
+@media (max-width:640px), (orientation:portrait) and (max-width:900px){
+  .book{display:flex;flex-direction:column;aspect-ratio:auto;width:100%;border-radius:12px}
+  .pic-page{height:min(56vh,120vw)}
+  .pic-page::before{display:none}
+  .text-page{padding:28px 22px 44px}
+}
+@media (prefers-reduced-motion:reduce){.fade,.controls button{transition:none}}
+</style>
+
+<main class="book" id="book" aria-live="polite">
+  <section class="text-page"><div class="fade" id="text"></div><p class="folio" id="folio"></p></section>
+  <figure class="pic-page" style="margin:0"><img class="fade" id="pic" alt="" hidden><div class="ph fade" id="ph" hidden></div></figure>
+</main>
+
+<nav class="controls" aria-label="التنقل بين الصفحات">
+  <button id="next" type="button" aria-label="الصفحة التالية">‹ التالي</button>
+  <span class="count" id="count" dir="rtl"></span>
+  <button id="prev" type="button" aria-label="الصفحة السابقة">السابق ›</button>
+</nav>
+
+<script>
+// The book's pages. A page is { img: "p01.jpg", alt: "...", text: [...] }; a text item can be a string or { verse: [lines] }.
+const BOOK = {
+  title: "الطائر الأخضر",
+  kicker: "حكاية شعبية",
+  credit: "إعداد",
+  author: "إياد زيعور",
+  pages: [
+    { type: "cover", img: "images/c00.jpg", pos: "55% 50%", alt: "علي وهنية يمسكان بيدي بعضهما قرب بئر قديمة يغطيها اللبلاب عند طرف الغابة، وينظران بدهشة إلى طائر أخضر يطير أمامهما" },
+    { img: "images/g01.jpg", alt: "علي وهنية يركضان ضاحكين يداً بيد في حقل القمح، وأبوهما يبتسم من باب البيت والقرية خلفهما", text: [
+      "كان يا ما كان، في قديم الزمان، أخ وأخت اسمهما علي وهنية. كانا يحبان بعضهما حباً كبيراً، ويعيشان مع أبيهما في قرية صغيرة تحيط بها الحقول والغابات.",
+      "وكانت أمهما قد توفيت وهما صغيران، وبعد سنوات تزوج أبوهما امرأة أخرى. حاول الطفلان أن يتقبلا حياتهما الجديدة، لكن زوجة أبيهما لم تكن تحبهما، وكانت تغار من مكانتهما في قلب أبيهما."
+    ] },
+    { img: "images/g02b.jpg", alt: "زوجة الأب بثوبها الأخضر وأساورها الذهبية تمسك ملعقة وتنظر بارتباك إلى القدر الكبير شبه الفارغ في المطبخ", text: [
+      "وفي يوم من الأيام، قرر الأب أن يدعو أهل القرية إلى وليمة احتفالاً بزواجه. فأحضر خروفاً وطلب من زوجته أن تعده للضيوف.",
+      "طبخت المرأة الطعام، وكانت كلما ذاقته قالت لنفسها:",
+      "“لقمة واحدة فقط.”",
+      "ثم أكلت لقمة أخرى، ثم أخرى، حتى فوجئت بأنها أكلت من الطعام أكثر بكثير مما ينبغي، ولم يبقَ ما يكفي للضيوف!",
+      "جلست خائفة لا تعرف ماذا تفعل. كيف ستخبر زوجها بما حدث؟"
+    ] },
+    { img: "images/g03b.jpg", alt: "زوجة الأب تقود علياً من يده على درب بين أشجار الزيتون نحو البئر القديمة، وهي تبتسم بمكر وهو يلتفت خلفه قلقاً", text: [
+      "وبدل أن تعترف بخطئها، قررت أن تلقي اللوم على علي.",
+      "أخذته بعيداً عن القرية بحجة أنها تريد منه مساعدتها، حتى وصلا إلى بئر قديمة مهجورة عند أطراف الغابة. وهناك تركته في البئر، ثم عادت إلى البيت تدعي أن علي أخذ طعام الوليمة وهرب."
+    ] },
+    { img: "images/g04.jpg", alt: "علي يجلس وحيداً في قاع البئر معانقاً ركبتيه وينظر إلى السماء فوقه، وبجانبه بركة ماء صغيرة وفطر، وحجر بارز يتوهج بضوء أخضر في الجدار", text: [
+      "أما علي، فوجد نفسه وحيداً في قاع البئر.",
+      "كان خائفاً، لكنه لم يستسلم. وجد قليلاً من الماء وبعض الفطر، فاستطاع أن يبقى على قيد الحياة، وراح كل يوم يحاول تسلق جدران البئر.",
+      "وبعد محاولات كثيرة وصل إلى حجر بارز في منتصفها."
+    ] },
+    { img: "images/g05.jpg", alt: "علي يقف على الحجر المسحور داخل البئر وقد نبت له جناحان أخضران، وبجانبه طائر أخضر", text: [
+      "وما إن وضع قدمه عليه حتى حدث أمر عجيب.",
+      "نمت على جسده ريشات خضراء لامعة، وتحولت ذراعاه إلى جناحين، وإذا به يصبح طائراً أخضر صغيراً.",
+      "طار مذعوراً داخل البئر، ثم نزل من جديد إلى أسفل الحجر…",
+      "فعاد علي كما كان!",
+      "عندها فهم السر.",
+      "فوق الحجر يصبح طائراً، وتحته يعود صبياً.",
+      "ومع الأيام، تعلم علي كيف يستخدم سحر البئر، وصار يطير كل يوم مسافة أبعد قليلاً، حتى تجرأ أخيراً وطار نحو قريته."
+    ] },
+    { img: "images/g06.jpg", alt: "هنية تسند ذقنها بيديها عند النافذة، وطائر أخضر يقف على غصن في الخارج", text: [
+      "أما هنية، فلم تصدق يوماً أن أخاها هرب.",
+      "كانت تجلس عند النافذة كل مساء، تنظر إلى الطريق وتنتظر عودته.",
+      "وفي أحد الأيام لاحظت طائراً أخضر يحوم حول نافذتها. كان يعود كل يوم، ويقف على الغصن نفسه، وينظر إليها بطريقة غريبة، كأنه يحاول أن يقول شيئاً."
+    ] },
+    { img: "images/g07.jpg", alt: "هنية نائمة في سريرها ليلاً، وفوقها في سحابة الحلم طائر أخضر يغني", text: [
+      "وفي تلك الليلة رأت هنية الطائر في حلمها، وسمعته يقول:",
+      { verse: ["أنا الطير الأخضر", "خالتي رمتني بالبير", "وأختي الحنونة ما نسيتني", "وإذا بدها تنقذني خليها تلحقني"] },
+      "استيقظت هنية وقلبها يخفق.",
+      "وفي الصباح انتظرت عند النافذة.",
+      "وجاء الطائر.",
+      "طار قليلاً ثم عاد إليها، كأنه يطلب منها أن تتبعه."
+    ] },
+    { img: "images/g08.jpg", alt: "علي وهنية يتعانقان فرحين في قاع البئر، وريشات خضراء تتطاير وشعاع شمس يهبط من الأعلى", text: [
+      "خرجت هنية من البيت وتبعته عبر الحقول وبين الأشجار، حتى وصلا إلى البئر القديمة.",
+      "نزل الطائر داخلها، وما إن تجاوز الحجر المسحور حتى عاد علي إلى صورته البشرية.",
+      "نظرت هنية إلى أخيها في دهشة، ثم صاحت:",
+      "“علي!”",
+      "فرح الاثنان فرحاً عظيماً."
+    ] },
+    { img: "images/g09b.jpg", alt: "هنية تنزل إلى البئر على الحبل، وعلي في الأسفل يرفع يده محذراً", text: [
+      "أرادت هنية أن تنزل إليه، فحذرها علي:",
+      "“لا تنزلي! هذه البئر مسحورة، وقد لا نستطيع الخروج.”",
+      "لكن هنية لم تستطع أن تترك أخاها وحيداً، فنزلت إليه.",
+      "وسرعان ما اكتشف الاثنان أنهما أصبحا عالقين معاً."
+    ] },
+    { img: "images/g10.jpg", alt: "الطائر الأخضر يطير خارجاً من البئر فوق الغابة، وهنية تلوّح له من القاع", text: [
+      "مرت الأيام، وبدأ الطعام ينفد.",
+      "كان علي يستطيع أن يتحول إلى طائر ويغادر البئر، لكنه كان صغيراً لا يستطيع حمل ما يكفي من الطعام لأخته.",
+      "فتذكر أن الغابة المحيطة بالبئر كانت، مثل البئر نفسها، مليئة بالسحر.",
+      "وطار يبحث عن حل."
+    ] },
+    { img: "images/g11.jpg", alt: "الطائر الأخضر يقف على صخرة قرب نبع ماء صافٍ في الغابة", text: [
+      "بعد رحلة طويلة وصل إلى نبع ماء صافٍ وسأله:",
+      "“يا نبعة الماء، ماذا يحدث لي إن شربت منك؟”",
+      "فهمس الماء:",
+      "“تصبح قطاً.”",
+      "فكر علي وقال:",
+      "“القط سريع وذكي، لكنه لن يستطيع حمل ما يكفي من الطعام.”",
+      "فتابع طريقه.",
+      "ووصل إلى نبعة ثانية.",
+      "“وماذا يحدث إن شربت منك؟”",
+      "فقالت:",
+      "“تصبح كلباً.”",
+      "ففكر قليلاً، لكنه قرر أن يبحث عن شيء يستطيع أن يجوب به الغابة ويحمل الطعام بسهولة."
+    ] },
+    { img: "images/g12b.jpg", alt: "علي يشرب من نبع الماء في الغابة ويتحول إلى غزال أخضر العينين وسط دوامات من البريق الأخضر", text: [
+      "وأخيراً وصل إلى نبعة ثالثة بين الأشجار.",
+      "سألها:",
+      "“وماذا يحدث إن شربت منك؟”",
+      "فأجابته:",
+      "“تصبح غزالاً.”",
+      "شرب علي من الماء.",
+      "وفي لحظة تحول إلى غزال أخضر العينين، قوي الساقين وسريع العدو.",
+      "ومنذ ذلك اليوم أخذ يجوب الغابة، يجمع الثمار والجذور وكل ما يصلح للأكل، ثم يعود إلى البئر ويلقيه لأخته.",
+      "وبهذه الطريقة حافظ كل واحد منهما على حياة الآخر."
+    ] },
+    { img: "images/g13.jpg", alt: "الغزال عالق في شبكة الصيادين، وسلة الثمار مقلوبة بجانبه", text: [
+      "وفي أحد الأيام، بينما كان علي يجمع الطعام، وقع في شبكة للصيادين.",
+      "حاول الإفلات فلم يستطع.",
+      "ولم يكن خائفاً على نفسه بقدر خوفه على هنية.",
+      "من سيحمل إليها الطعام إذا لم يعد؟"
+    ] },
+    { img: "images/g14.jpg", alt: "الأمير يركع في الغابة ويقطع شبكة الصيادين بسكين صغيرة ليطلق الغزال الباكي، وخلفه حصانه الأبيض ورفيقاه", text: [
+      "اقترب أحد الصيادين منه، وكان أمير البلاد قد خرج مع رفاقه للصيد في ذلك اليوم.",
+      "رفع الأمير قوسه، لكنه عندما اقترب من الغزال رأى الدموع في عينيه.",
+      "أنزل قوسه وقال:",
+      "“لن أؤذي حيواناً ينظر إليّ وكأنه يحمل هماً أكبر من همه.”",
+      "وقطع الشبكة وأطلق سراحه."
+    ] },
+    { img: "images/g15.jpg", alt: "الغزال يركض وينظر خلفه، والأمير يتبعه على حصانه الأبيض نحو البئر", text: [
+      "لكن الغزال لم يهرب بعيداً.",
+      "ركض خطوات، ثم توقف ونظر خلفه إلى الأمير.",
+      "ثم ركض مرة أخرى وتوقف.",
+      "فهم الأمير أنه يريد منه أن يتبعه.",
+      "امتطى حصانه وسار خلفه حتى وصل إلى البئر العجيبة.",
+      "هناك رأى الغزال يجمع الطعام ويلقيه إلى الداخل."
+    ] },
+    { img: "images/g16b.jpg", alt: "الأمير يطل من حافة البئر مندهشاً على علي وهنية والغزال في الأسفل", text: [
+      "ثم شاهد أمراً لم يره في حياته من قبل.",
+      "نزل الغزال إلى البئر، وعندما تجاوز الحجر المسحور عاد صبياً.",
+      "اقترب الأمير من حافة البئر ونادى:",
+      "“من أنتما؟ وكيف وصلتما إلى هنا؟”",
+      "فحكى له علي وهنية قصتهما."
+    ] },
+    { img: "images/g17.jpg", alt: "علي وهنية يخرجان من الممر المحفور في التل إلى ضوء الشمس، والأمير يستقبلهما", text: [
+      "عاد الأمير إلى القصر واستدعى أكثر الناس معرفة بأسرار الأرض والبناء والسحر.",
+      "قالوا له:",
+      "“إن كان سحر البئر يمنع من يدخلها من الخروج من أعلاها، فلن ندخلها من أعلاها.”",
+      "فحفر العمال ممراً من جانب التل حتى وصلوا إلى أسفل البئر.",
+      "ومن ذلك الممر خرج علي وهنية أخيراً إلى ضوء الشمس."
+    ] },
+    { img: "images/g18.jpg", alt: "علي وهنية يركضان إلى حضن أبيهما أمام البيت، وزوجة الأب تغادر والأمير على حصانه", text: [
+      "وعادا إلى أبيهما، فعرف الحقيقة، وندم لأنه صدق الحكاية دون أن يبحث عن ابنه.",
+      "أما زوجة الأب، فانكشف كذبها واضطرت إلى مغادرة البيت، ولم تعد قادرة على إيذاء الطفلين.",
+      "كبر علي وهنية، لكنهما لم ينسيا أبداً أيام البئر ولا الغابة المسحورة.",
+      "وأصبح علي معروفاً بحكمته وشجاعته، بينما أصبحت هنية مشهورة بوفائها وإصرارها على البحث عن الحقيقة.",
+      "وظل الأمير صديقاً لهما، وكانت أبواب قصره مفتوحة لهما دائماً."
+    ] },
+    { img: "images/g19.jpg", alt: "البئر القديمة وسط الغابة في ليلة مقمرة، وطائر أخضر صغير يحوم بين الأغصان", text: [
+      "أما البئر القديمة، فقد بقيت وسط الغابة.",
+      "ويقال إن من يمر بالقرب منها في الليالي الهادئة قد يرى بين الأشجار طائراً أخضر صغيراً…",
+      "يطير مرة حول البئر، ثم يختفي بين الأغصان."
+    ] }
+  ]
+};
+
+const $ = id => document.getElementById(id);
+const ar = n => n.toLocaleString("ar-EG");
+const bird = `<svg viewBox="0 0 32 24" aria-hidden="true"><path d="M3 15c3-1 6-1 8 0 1-5 5-9 10-9 2 0 3 1 4 2l4-1-3 3c0 6-5 11-12 11-5 0-9-2-11-6z" fill="currentColor"/><path d="M11 15c3-4 8-5 12-3-3 1-6 4-7 8" fill="none" stroke="#FBF6EA" stroke-width="1.2" stroke-linecap="round"/><circle cx="23.5" cy="9.5" r="1" fill="#FBF6EA"/></svg>`;
+
+let i = 0;
+try { const h = parseInt((location.hash.match(/^#page-(\d+)$/) || [])[1], 10); if (h >= 1 && h <= BOOK.pages.length) i = h - 1; } catch (e) {}
+
+function para(t){
+  if (typeof t === "object" && t.verse) return `<div class="verse">${t.verse.map(l => `<p>${l}</p>`).join("")}</div>`;
+  return `<p${t.startsWith("–") ? ' class="dlg"' : ""}>${t}</p>`;
+}
+
+function render(){
+  const p = BOOK.pages[i];
+  let html;
+  if (p.type === "cover") {
+    html = `<div class="cover"><p class="kicker">${BOOK.kicker}</p><h1>${BOOK.title}</h1><div class="ornament"><span></span>${bird}<span></span></div><p class="author">${BOOK.credit} <b>${BOOK.author}</b></p></div>`;
+    $("folio").textContent = "";
+  } else {
+    html = `<div class="story">${(p.text || []).map(para).join("")}</div>`;
+    $("folio").textContent = ar(i);
+  }
+  $("text").innerHTML = html;
+  if (p.img) {
+    $("pic").hidden = false; $("ph").hidden = true;
+    $("pic").src = p.img; $("pic").alt = p.alt || ""; $("pic").style.objectPosition = p.pos || "";
+  } else {
+    $("pic").hidden = true; $("ph").hidden = false;
+    $("ph").innerHTML = `${bird}<p>رسم هذه الصفحة قادم</p>`;
+  }
+  $("count").textContent = i === 0 ? "الغلاف" : `صفحة ${ar(i)} من ${ar(BOOK.pages.length - 1)}`;
+  $("prev").disabled = i === 0;
+  $("next").disabled = i === BOOK.pages.length - 1;
+  const next = BOOK.pages[i + 1]; if (next && next.img) { const im = new Image(); im.src = next.img; }
+  fit();
+}
+
+// Long pages: shrink the story text until it fits the page (landscape layout only).
+const stacked = matchMedia("(max-width:640px), (orientation:portrait) and (max-width:900px)");
+function fit(){
+  const story = document.querySelector(".story");
+  if (!story) return;
+  story.style.fontSize = "";
+  if (stacked.matches) return;
+  const page = story.closest(".text-page"), cs = getComputedStyle(page);
+  const avail = page.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom) - 18;
+  let fs = parseFloat(getComputedStyle(story).fontSize);
+  while (story.offsetHeight > avail && fs > 11) { fs -= 0.5; story.style.fontSize = fs + "px"; }
+}
+addEventListener("resize", fit);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+
+function go(d){
+  const n = i + d; if (n < 0 || n >= BOOK.pages.length) return;
+  const book = $("book");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) { i = n; render(); setHash(); return; }
+  book.classList.add("turning");
+  setTimeout(() => { i = n; render(); setHash(); requestAnimationFrame(() => book.classList.remove("turning")); }, 350);
+}
+function setHash(){ try { history.replaceState(null, "", i ? `#page-${i + 1}` : location.pathname + location.search); } catch (e) {} }
+
+$("next").onclick = () => go(1);
+$("prev").onclick = () => go(-1);
+// Arabic books turn right to left: the left arrow moves forward.
+addEventListener("keydown", e => {
+  if (e.key === "ArrowLeft" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); go(1); }
+  if (e.key === "ArrowRight" || e.key === "PageUp") { e.preventDefault(); go(-1); }
+});
+let sx = null, sy = null;
+$("book").addEventListener("touchstart", e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+$("book").addEventListener("touchend", e => {
+  if (sx === null) return;
+  const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(dx > 0 ? 1 : -1);
+  sx = sy = null;
+}, { passive: true });
+addEventListener("hashchange", () => { const h = parseInt((location.hash.match(/^#page-(\d+)$/) || [])[1], 10); if (h >= 1 && h <= BOOK.pages.length && h - 1 !== i) { i = h - 1; render(); } });
+render();
+</script>

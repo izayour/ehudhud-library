@@ -1,0 +1,73 @@
+THE CONQUEROR OF THE DESERT — IMAGE PROMPTS
+25 pictures: the cover + one for each of the 24 chapters.
+(When a chapter runs over two pages, its picture appears on both.)
+
+START EVERY PROMPT WITH THIS STYLE LINE
+--------------------------------------
+Soft watercolour children's picture-book illustration with hand-drawn ink lines, warm natural light, Middle Eastern setting, present day, portrait orientation 3:4.
+
+END EVERY PROMPT WITH
+---------------------
+No text, no words, no letters, no page numbers.
+
+CHARACTERS (paste the ones on the page; attach an earlier picture as a reference once you have one)
+----------------------------------------------------------------------------
+- YASMINE: girl about 9, olive skin, big curious brown eyes, dark wavy hair in a ponytail with a yellow ribbon, green T-shirt, light trousers, sandals. Carries a small blue watering jug.
+- HER BROTHER: boy about 6, short dark hair, orange T-shirt, shorts, a football.
+- BABA (her father): man in his 40s, short beard, kind eyes, glasses, plain shirt with rolled sleeves.
+- ABU NUMAN: very old man, white beard, deeply wrinkled kind face, white keffiyeh, long grey-brown robe, wooden walking stick. Leads a brown-and-white goat on a rope.
+- THE OLD OLIVE TREE: a single old olive tree with a twisted silver trunk next to a small white desert house; at first its branches are dry with very few leaves.
+- THE GARDEN: a small patch beneath the olive tree with low desert plants and bright yellow wildflowers.
+- ANIMALS: two grey pigeons; a slender sand-coloured gazelle; three brown hens and a red rooster.
+
+PROMPTS
+-------
+COVER: Yasmine kneeling beneath the old olive tree beside a small house in the golden desert, watering a patch of bright yellow flowers with her blue jug; behind her, sand dunes stretch to the horizon, while in the distance a small green orchard rises out of the sand. Very old Abu Numan with his walking stick and goat watches kindly from the side. Warm sunset light, space at the top.
+
+1. YASMINE'S GREEN WORLD: Yasmine running happily through tall grass and wildflowers on a green mountainside, oak forest behind her, a sparkling river below, butterflies around her; in a corner, she drops flower seeds into a small cloth bag.
+
+2. A DIFFERENT HOME: Yasmine standing in front of a small white house surrounded by endless sand dunes, holding her little cloth bag and looking around, a little sad; next to the house stands a lonely old olive tree with dry, tired branches.
+
+3. NOTHING: Yasmine crouching in the shade of the old olive tree, staring at a bare patch of watered sand, chin in her hand, disappointed; her blue jug beside her. Hot, quiet afternoon.
+
+4. SOMETHING IS ALIVE!: Yasmine frozen in surprise beneath the olive tree, a football rolling away behind her, staring at tiny green shoots pushing up through the sand; some already show bright yellow flowers. Her little brother runs up in the background.
+
+5. YASMINE'S LITTLE GARDEN: The patch beneath the olive tree now full of yellow desert flowers and low green plants; butterflies and small birds visit; Yasmine kneels among them with her blue jug, smiling.
+
+6. A NEW VOICE: Early morning on the balcony of the small white house: Yasmine in pyjamas pulling her sleepy father by the hand, both looking toward the olive tree, where two grey pigeons carry tiny twigs to build a nest.
+
+7. FOUR MONTHS: Evening: Yasmine and her father walking hand in hand past her little garden and climbing a high sand dune; the father looks thoughtful, Yasmine looks up at him, hopeful.
+
+8. A SKY FULL OF STARS: Yasmine and her father lying on their backs on top of a sand dune at night, arms stretched out, gazing up at a breathtaking sky full of thousands of stars and the Milky Way; Yasmine's face full of wonder.
+
+9. THE NIGHT VISITOR: Moonlit desert night: a graceful gazelle leaping between the dunes toward the little garden under the olive tree; Yasmine running down the dune after it, laughing, her father sitting up on the dune top, smiling.
+
+10. FOUR NEW FRIENDS: Yasmine scattering grain beneath the olive tree for three brown hens and a red rooster beside a small wooden coop she has built; the hens scratch the soil, which looks loose and soft where they have dug.
+
+11. GOODBYE: Yasmine wagging a finger at a red rooster that stares back at her, unimpressed, while she fills containers with grain and water in front of the coop; a packed family car waits in the background.
+
+12. THE TREE AWAKENS: Yasmine hugging her happy hens and rooster, then looking up in amazement at a branch of the old olive tree covered in fresh green leaves; warm afternoon light.
+
+13. THE STRANGER: Very old Abu Numan with his white keffiyeh and walking stick arriving across the sandy land toward the little garden, a brown-and-white goat pulling impatiently on its rope; Yasmine peeking shyly from behind the olive tree trunk.
+
+14. THIEVES!: Yasmine, cross, pouring water from her blue jug over a long line of tiny ants carrying grain across the ground; behind her, Abu Numan raises a hand gently to stop her.
+
+15. LOOK MORE CLOSELY: Yasmine and Abu Numan crouching together, following the line of ants to a hen pecking excitedly at the soil; in the distance, a small green orchard island stands in the middle of the sand.
+
+16. THE VILLAGE THAT DISAPPEARED: Dreamlike scene drawn like a memory, softer and faded colours: an old village with stone houses surrounded by green gardens and orchards, slowly being covered by drifting sand as families walk away with their belongings toward a distant city.
+
+17. THE LAST NEIGHBOUR: In faded memory colours: old Abu Numan (slightly younger, grey beard) sitting beneath a dried, leafless olive tree in a deserted orchard, two sheep beside him, tossing bread crumbs to a line of ants with a tender smile.
+
+18. THE ANT MAN: In faded memory colours: Abu Numan digging small holes in the dry orchard soil and placing food scraps inside; ants swarming around; two villagers in the background shaking their heads and laughing at him.
+
+19. THE RAIN: In faded memory colours: heavy rain falling over the abandoned orchard; a cut-away view of the ground shows water trickling down through ant tunnels deep into the soil, where tree roots are waiting.
+
+20. THE ORCHARD AWAKENS: In faded memory colours: Abu Numan kneeling in his orchard, which has turned green, with fresh shoots on the old trees and small plants covering the ground; ants around his feet; his grown-up children standing behind him, amazed.
+
+21. ABU NUMAN: Back in the present, full colours: Yasmine jumping to her feet beneath the olive tree, pointing at the old man with wide, astonished eyes; Abu Numan laughing gently, letting soil trickle through his fingers; his goat beside him.
+
+22. YASMINE'S IDEA: Yasmine kneeling to dig a small hole and drop food scraps into it, ants already arriving; Abu Numan beside her, showing her how; hens and the goat nearby; the olive tree with pigeons above.
+
+23. LITTLE BY LITTLE: A wide view of the desert land over the years: patches of green spreading between the dunes around several houses, families planting and watering, grass, bushes and young trees appearing; birds in the sky.
+
+24. THE CONQUEROR OF THE DESERT: Years later: a grown-up Yasmine (about 20, same ponytail with a yellow ribbon) telling a story to a circle of children sitting beneath tall green trees in a village now surrounded by orchards; very old Abu Numan sits beside her, laughing; the desert visible far in the distance.

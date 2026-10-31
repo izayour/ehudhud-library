@@ -1,0 +1,65 @@
+الشاطر حسن — أوامر الرسم
+AL-SHATER HASSAN — IMAGE PROMPTS
+17 pictures: the cover + one for each of the 16 scenes.
+(Scene 15 runs over two pages; its picture appears on both.)
+
+START EVERY PROMPT WITH THIS STYLE LINE
+--------------------------------------
+Soft watercolour children's picture-book illustration with hand-drawn ink lines, warm gentle light, an old Arab kingdom of a traditional folk tale, olden times, portrait orientation 3:4.
+
+END EVERY PROMPT WITH
+---------------------
+No text, no words, no letters, no page numbers.
+
+TIPS
+- Make the cover and scene 1 first. Then attach a picture of Hassan (and of the ghoul, once you have him) to every later prompt, so they keep the same faces.
+- Use a NEW CHAT for each picture, so earlier characters don't leak into other scenes.
+- Keep the ghouls big, hairy and funny rather than scary, and keep every fight bloodless.
+
+CHARACTERS (paste the ones that appear)
+---------------------------------------
+- HASSAN (الشاطر حسن): youngest son, about 15, slim and quick, big lively dark eyes, short curly black hair, a cheeky confident smile; cream tunic, short embroidered green vest, red sash, baggy trousers, soft leather boots; a small curved sword in his sash.
+- MOHAMMED (محمد): eldest son, about 22, tall and serious, short black beard, dark blue robe, white keffiyeh.
+- ALI (علي): middle son, about 19, sturdy, thin moustache, brown robe, keffiyeh.
+- THE OLD KING (their father): elderly, long white beard, gentle face, gold-trimmed crimson robe, simple gold crown.
+- THE WHITE CAMEL: a tall graceful white she-camel with a red-and-gold tasselled harness.
+- THE OLD GHOUL: an enormous old giant sitting by a fire, head round and huge like a mosque dome, arms like tree trunks, greenish-grey skin, bushy eyebrows, a tangled white beard so long it reaches the ground, ragged hide clothing; gruff but secretly kind, a little comical.
+- THE FORTY GHOULS: huge hairy giants of every shape and size: tall and thin, short and round, one-horned, big-nosed; greenish, grey and brown skin; carrying huge clubs; clumsy and silly.
+- THE CITY KING: a different king, middle-aged, black beard with grey streaks, turban with a jewel, blue and gold robe.
+- THE PRINCESSES: three sisters. The eldest with brown hair and a pearl headband; the middle with auburn hair and a silver headband; the youngest, HABQA (حبقة), with very long, thick black hair, a moon-bright face, a golden ring on her finger.
+
+PROMPTS
+-------
+COVER: Hassan standing on a rocky mountaintop at night holding a burning torch high, his cape blowing in the wind; below him, in the valley, the glow of a giant's campfire and the huge silhouette of the bearded ghoul; a moonlit palace on a far hill. Adventurous, magical mood, space at the top.
+
+SCENE 1 — الملك وأبناؤه: An old Arab throne room with carved arches, lanterns and rich carpets; the old king sitting on his throne, smiling; his three sons standing around him: serious Mohammed, sturdy Ali, and young Hassan in front, bright-eyed and curious.
+
+SCENE 2 — وصية الملك: The king's bedchamber at dusk: the old king lying ill in a large bed, speaking softly; his three sons kneeling around him, worried and listening; through an arched window, the white camel stands in the palace courtyard.
+
+SCENE 3 — رحلة الناقة البيضاء: A sweeping panorama at sunset: the white camel walking alone in front, carrying a coffin covered with a richly patterned cloth; the three brothers and a few servants following on foot and on horses; valleys, hills and tall mountains ahead.
+
+SCENE 4 — الخيمة فوق الجبل: A quiet mountaintop under moonlight: a small tent, a simple grave surrounded by stones, Mohammed sitting cross-legged beside a glowing candle praying; inside the open tent, Ali and Hassan asleep.
+
+SCENE 5 — الشمعة التي انطفأت: Windy dark night on the mountaintop: Hassan sitting beside a candle that has just blown out, a thin trail of smoke rising; he stares down into a dark valley where a tiny orange campfire glows; moon and stars above, the tent behind him with his sleeping brothers.
+
+SCENE 6 — الغول ذو اللحية الطويلة: In the valley, the enormous old ghoul sits by a big fire, his long white beard almost touching the flames; small Hassan stands in front of him, holding a stick and bowing politely with a confident smile; the ghoul scowls down at him, surprised. Scary-looking but not frightening.
+
+SCENE 7 — حلاق الغول: Funny scene: the giant ghoul sitting very still with his eyes closed, enjoying it, while Hassan stands on a rock and trims the end of the long white beard with his small sword; tufts of white hair flying around them; the fire crackling.
+
+SCENE 8 — سر الأربعين غولًا: The old ghoul leaning down and whispering a secret into Hassan's ear, a big finger to his lips; Hassan holds a burning branch from the fire; far behind them in the moonlit valley, forty huge shapes approach in a cloud of dust.
+
+SCENE 9 — لقاء الغيلان الأربعين: Hassan standing calm and confident in the middle of a crowd of forty ghouls of all shapes and sizes: some holding giant clubs, some scratching their heads, one leaning down to stare at him with a huge puzzled eye; moonlight.
+
+SCENE 10 — الحصى الأربعون: In front of a tall palace wall under the moon, the ghouls stand in a long clumsy line, each one handing a small pebble to Hassan, who collects them in a little cloth bag with a sly smile.
+
+SCENE 11 — فوق سور القصر: Bloodless action scene: Hassan standing on top of the palace wall with his sword raised and a small pile of pebbles beside him; a giant ghoul leaping up toward the wall with a surprised face; below, other ghouls in a tumbled heap, dazed with little stars circling their heads; moonlit palace towers.
+
+SCENE 12 — الأميرات الثلاث: One picture divided into three connected arched windows showing three royal bedrooms: a sleeping princess with brown hair; a sleeping princess with auburn hair; and in the third room, Habqa asleep with her very long black hair spread across the pillow, while Hassan stands by her bed admiring a golden ring in his hand. Soft lamplight, gentle and innocent.
+
+SCENE 13 — السر تحت القصر: In a dim palace corridor, Hassan pressing his open palm against a whitewashed wall, leaving a clear handprint; behind him, down a shadowy staircase, the faint silhouettes of two plotters, without detail; a lantern glowing on the wall.
+
+SCENE 14 — صاحب الكف: A busy palace courtyard in the morning: a long line of men of all ages taking turns pressing their hands against a handprint on the wall, none of them fitting; the city king sits on a chair under a canopy, watching; guards keep the line in order.
+
+SCENE 15 — الشاطر حسن أمام الملك: In the palace courtyard, Hassan places his hand on the handprint and it fits perfectly; the city king stands up in amazement; Mohammed, Ali and the ministers watch with wide eyes.
+
+SCENE 16 — العودة إلى الجبل: Final panorama: the three brothers and their three brides riding horses along a road through a green orchard beside a river; in the background, half hidden among the trees, the mysterious shadow of a huge marid (genie) with glowing eyes, watching them. Hint of mystery, not scary.
